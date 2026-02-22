@@ -1,0 +1,12 @@
+fastapi==0.99.1
+uvicorn==0.30.6
+rank-bm25==0.2.2
+aiofiles==24.1.0
+python-multipart==0.0.9
+httpx==0.27.2
+pydantic<2.0.0
+markdown-it-py==3.0.0
+pypdf==5.1.0
+sentence-transformers==2.7.0
+faiss-cpu
+rich==13.7.0

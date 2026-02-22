@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dondet • Personal AI Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">dondet</div>
+      <button id="new-convo" class="primary"><i class="fas fa-plus"></i> New Chat</button>
+      
+      <div class="menu-header">My Content</div>
+      <div class="menu-item" id="docs-btn"><i class="fas fa-folder"></i> Documents</div>
+      <div class="menu-item" id="settings-btn"><i class="fas fa-cog"></i> Settings & Help</div>
+
+      <div class="menu-header">Conversations</div>
+      <div class="list" id="convo-list"></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="title">Personal AI Assistant</div>
+        <div class="actions">
+          <button id="prompt-btn">System Prompt</button>
+        </div>
+      </header>
+      <section class="chat">
+        <div id="messages"></div>
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <span>Thinking...</span>
+        </div>
+        <div class="composer">
+          <button id="upload-trigger" class="icon-btn" title="Upload Document"><i class="fas fa-paperclip"></i></button>
+          <input id="query" placeholder="Ask anything..." />
+          <button id="send" class="icon-btn send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <input type="file" id="file-input" style="display:none" />
+  
+  <!-- Documents Modal -->
+  <div id="docs-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Documents</h3>
+        <button class="close-modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div id="doc-list" class="doc-list"></div>
+        <div class="upload-area" id="upload-area">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Click to upload or drag and drop</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prompt Modal -->
+  <div id="prompt-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>System Prompt</h3>
+        <button class="close-modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <textarea id="system-prompt" rows="10"></textarea>
+        <div class="modal-actions">
+          <button id="save-prompt" class="primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Settings & Help</h3>
+        <button class="close-modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 16px;">
+          <label for="lm-api-key" style="display:block;margin-bottom:8px;font-weight:500;">LM Studio API Key</label>
+          <input id="lm-api-key" type="password" placeholder="Enter API Key (e.g. lm-studio)" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;" />
+          <p style="font-size:12px;color:var(--text-light);margin-top:4px;">Leave empty if no auth required.</p>
+        </div>
+        <div class="modal-actions">
+          <button id="save-settings" class="primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

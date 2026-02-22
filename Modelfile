@@ -1,0 +1,12 @@
+# 1. Choose your base brain (already downloaded via 'ollama pull')
+FROM llama3.2:1b
+
+# 2. Set the "Baking" parameters
+# 8192 is perfect for 16GB RAM to avoid slowdowns
+PARAMETER num_ctx 8192
+
+# Lower temperature (0.3) makes it more factual; higher (0.9) more creative
+PARAMETER temperature 0.8
+
+# Ensure it stays on your M1 GPU
+PARAMETER num_gpu 99
